@@ -102,7 +102,10 @@ const continueTarget = computed(() => {
   if (!entries.length) return null;
 
   entries.sort((a, b) => b[1] - a[1]);
-  const [module, index] = entries[0];
+  const top = entries[0];
+  if (!top) return null;
+  const module = top[0];
+  const index = top[1];
   return { module, index: Number(index) || 0 };
 });
 
@@ -119,3 +122,4 @@ const continueLearning = () => {
   router.push({ path: '/quiz', query: { module: continueTarget.value.module } });
 };
 </script>
+
