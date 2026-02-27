@@ -1,0 +1,2036 @@
+[
+  {
+    "id": 101,
+    "module": "JS/CSS 基础",
+    "type": "choice",
+    "question": "下列关于闭包的说法，错误的是？",
+    "options": [
+      "闭包可以访问外部函数的变量",
+      "闭包会造成内存泄漏，应禁止使用",
+      "闭包可以实现数据私有化",
+      "函数嵌套函数且内部函数引用外部变量即形成闭包"
+    ],
+    "answer": 1,
+    "analysis": "闭包虽然可能导致内存占用增加，但并非一定造成内存泄漏（除非循环引用或未释放）。它是 JS 核心特性，广泛用于模块化、防抖节流等场景，不应禁止使用。",
+    "answerText": "闭包会造成内存泄漏，应禁止使用"
+  },
+  {
+    "id": 102,
+    "module": "JS/CSS 基础",
+    "type": "choice",
+    "question": "Flex 布局中，实现主轴居中对齐的属性是？",
+    "options": [
+      "align-items: center",
+      "justify-content: center",
+      "align-content: center",
+      "text-align: center"
+    ],
+    "answer": 1,
+    "analysis": "justify-content 控制主轴（横向）对齐，align-items 控制交叉轴（纵向）对齐。",
+    "answerText": "justify-content: center"
+  },
+  {
+    "id": 103,
+    "module": "JS/CSS 基础",
+    "type": "choice",
+    "question": "Promise.all([p1, p2]) 中，如果 p1 失败（rejected），结果会怎样？",
+    "options": [
+      "等待 p2 完成后返回结果",
+      "立刻返回 rejected 状态和 p1 的错误",
+      "返回 p2 的成功结果",
+      "抛出异常终止程序"
+    ],
+    "answer": 1,
+    "analysis": "Promise.all 具有'一损俱损'特性，只要有一个 rejected，整体立即 rejected。如果需要全部执行完，应使用 Promise.allSettled。",
+    "answerText": "立刻返回 rejected 状态和 p1 的错误"
+  },
+  {
+    "id": 104,
+    "module": "JS/CSS 基础",
+    "type": "choice",
+    "question": "下列哪个操作不会触发重排（Reflow）？",
+    "options": [
+      "修改元素宽度 width",
+      "修改元素颜色 color",
+      "修改元素位置 top",
+      "修改浏览器窗口大小"
+    ],
+    "answer": 1,
+    "analysis": "修改颜色（color/background）只触发重绘（Repaint），不改变布局几何信息，因此不触发重排。其他选项都会改变几何布局。",
+    "answerText": "修改元素颜色 color"
+  },
+  {
+    "id": 105,
+    "module": "JS/CSS 基础",
+    "type": "choice",
+    "question": "ES6 中，箭头函数与普通函数的区别，描述错误的是？",
+    "options": [
+      "箭头函数没有自己的 this",
+      "箭头函数不能作为构造函数",
+      "箭头函数没有 arguments 对象",
+      "箭头函数可以改变 prototype 指向"
+    ],
+    "answer": 3,
+    "analysis": "箭头函数没有 prototype 属性，因此不能作为构造函数，也不能改变 prototype。",
+    "answerText": "箭头函数可以改变 prototype 指向"
+  },
+  {
+    "id": 106,
+    "module": "JS/CSS 基础",
+    "type": "judge",
+    "question": "CSS 中 BFC（块级格式化上下文）区域内的元素与外部元素相互隔离，互不影响。",
+    "answer": true,
+    "analysis": "正确。BFC 是一个独立的渲染区域，内部布局不会影响外部，常用于清除浮动、防止 margin 重叠。"
+  },
+  {
+    "id": 107,
+    "module": "JS/CSS 基础",
+    "type": "judge",
+    "question": "0.1 + 0.2 === 0.3 的结果是 true。",
+    "answer": false,
+    "analysis": "错误。由于 IEEE 754 浮点数精度问题，0.1 + 0.2 结果是 0.30000000000000004。"
+  },
+  {
+    "id": 108,
+    "module": "JS/CSS 基础",
+    "type": "choice",
+    "question": "以下哪个事件循环（Event Loop）阶段执行微任务（Microtask）？",
+    "options": [
+      "setTimeout 回调之后",
+      "宏任务执行结束，渲染之前",
+      "DOM 渲染之后",
+      "setInterval 回调之中"
+    ],
+    "answer": 1,
+    "analysis": "微任务（Promise.then, nextTick）在当前宏任务结束后、UI 渲染前清空。",
+    "answerText": "宏任务执行结束，渲染之前"
+  },
+  {
+    "id": 109,
+    "module": "JS/CSS 基础",
+    "type": "choice",
+    "question": "HTTP 状态码 304 代表什么？",
+    "options": [
+      "永久重定向",
+      "未授权",
+      "资源未修改（使用缓存）",
+      "服务器内部错误"
+    ],
+    "answer": 2,
+    "analysis": "304 Not Modified 表示资源未修改，客户端可直接使用本地缓存，通过 ETag/Last-Modified 协商。",
+    "answerText": "资源未修改（使用缓存）"
+  },
+  {
+    "id": 110,
+    "module": "JS/CSS 基础",
+    "type": "choice",
+    "question": "CommonJS 和 ES Module 的核心区别是？",
+    "options": [
+      "CommonJS 是静态加载，ESM 是动态加载",
+      "CommonJS 输出值的拷贝，ESM 输出值的引用",
+      "CommonJS 只能用于浏览器",
+      "ESM 不支持 Tree Shaking"
+    ],
+    "answer": 1,
+    "analysis": "CommonJS 运行时加载且输出拷贝；ESM 编译时输出接口（引用），支持静态分析（Tree Shaking）。",
+    "answerText": "CommonJS 输出值的拷贝，ESM 输出值的引用"
+  },
+  {
+    "id": 111,
+    "module": "JS/CSS 基础",
+    "type": "choice",
+    "question": "下列关于 this 指向的说法，正确的是？",
+    "options": [
+      "箭头函数的 this 由调用方式决定",
+      "普通函数在严格模式下默认 this 指向 window",
+      "call/apply/bind 可以显式指定 this",
+      "构造函数中 this 指向原型对象"
+    ],
+    "answer": 2,
+    "analysis": "call/apply/bind 都可以显式指定 this。箭头函数的 this 取决于定义时的外层作用域；严格模式下普通函数的 this 为 undefined；构造函数里的 this 指向新创建的实例对象。",
+    "answerText": "call/apply/bind 可以显式指定 this"
+  },
+  {
+    "id": 112,
+    "module": "JS/CSS 基础",
+    "type": "choice",
+    "question": "事件委托（Event Delegation）的核心优势是？",
+    "options": [
+      "减少事件监听数量并支持动态子元素",
+      "让事件变成同步执行",
+      "让事件冒泡被禁止",
+      "让事件默认捕获执行"
+    ],
+    "answer": 0,
+    "analysis": "事件委托把监听器绑定在父元素上，通过事件冒泡识别目标元素，能减少监听数量，并天然支持后续动态插入的子元素。",
+    "answerText": "减少事件监听数量并支持动态子元素"
+  },
+  {
+    "id": 113,
+    "module": "JS/CSS 基础",
+    "type": "choice",
+    "question": "关于原型链，下列描述正确的是？",
+    "options": [
+      "对象的 __proto__ 指向构造函数本身",
+      "函数的 prototype 指向其实例对象",
+      "实例.__proto__ === 构造函数.prototype",
+      "所有对象的原型最终都指向 Object.prototype 的 __proto__（即 {}）"
+    ],
+    "answer": 2,
+    "analysis": "实例对象内部原型（__proto__）指向构造函数的 prototype。原型链最终会走到 Object.prototype，再到 null，而不是 {}。",
+    "answerText": "实例.__proto__ === 构造函数.prototype"
+  },
+  {
+    "id": 114,
+    "module": "JS/CSS 基础",
+    "type": "choice",
+    "question": "以下哪些属于“宏任务（Macro Task）”？",
+    "options": [
+      "Promise.then",
+      "queueMicrotask",
+      "setTimeout",
+      "MutationObserver"
+    ],
+    "answer": 2,
+    "analysis": "setTimeout 属于宏任务；Promise.then 与 queueMicrotask 属于微任务；MutationObserver 回调也在微任务队列中执行（不同浏览器实现细节略有差异，但常规面试口径为微任务）。",
+    "answerText": "setTimeout"
+  },
+  {
+    "id": 115,
+    "module": "JS/CSS 基础",
+    "type": "choice",
+    "question": "CSS 选择器优先级从高到低（不考虑 !important）正确的是？",
+    "options": [
+      "元素选择器 > 类选择器 > id 选择器",
+      "id 选择器 > 类选择器/伪类 > 元素选择器/伪元素",
+      "内联样式 < id 选择器 < 类选择器",
+      "通配符选择器 > 元素选择器"
+    ],
+    "answer": 1,
+    "analysis": "常见口径：内联样式最高，其次 id，再是类/属性/伪类，最后是元素/伪元素，通配符最低；同级再按出现顺序后者覆盖前者。",
+    "answerText": "id 选择器 > 类选择器/伪类 > 元素选择器/伪元素"
+  },
+  {
+    "id": 116,
+    "module": "JS/CSS 基础",
+    "type": "judge",
+    "question": "async/await 本质上是对 Promise 的语法糖。",
+    "answer": true,
+    "analysis": "正确。async 函数返回 Promise，await 会把后续逻辑拆分到微任务中执行（等价于 then 链的写法）。"
+  },
+  {
+    "id": 117,
+    "module": "JS/CSS 基础",
+    "type": "judge",
+    "question": "使用 transform 改变元素位置一定会触发重排（Reflow）。",
+    "answer": false,
+    "analysis": "错误。transform 通常只触发合成（Composite），不会触发布局计算；这也是性能优化中推荐用 transform 做位移动画的原因。"
+  },
+  {
+    "id": 118,
+    "module": "JS/CSS 基础",
+    "type": "choice",
+    "question": "关于 CORS 简单请求（Simple Request），下列说法正确的是？",
+    "options": [
+      "一定会先发 OPTIONS 预检请求",
+      "请求头可以随意加自定义 header",
+      "Content-Type 只能是特定几种值",
+      "必须携带 Cookie"
+    ],
+    "answer": 2,
+    "analysis": "简单请求不会触发预检，且请求方法/头/Content-Type 有限制；Content-Type 仅限 application/x-www-form-urlencoded、multipart/form-data、text/plain 等。自定义头通常会触发预检。",
+    "answerText": "Content-Type 只能是特定几种值"
+  },
+  {
+    "id": 119,
+    "module": "JS/CSS 基础",
+    "type": "choice",
+    "question": "下面哪个会触发“强制同步布局（Layout Thrashing）”风险？",
+    "options": [
+      "连续读取 offsetWidth/offsetHeight 并紧接着写样式",
+      "只写 style.transform",
+      "只读 getComputedStyle 不写样式",
+      "只使用 requestAnimationFrame"
+    ],
+    "answer": 0,
+    "analysis": "读布局信息（offsetWidth/getBoundingClientRect）后再写样式会导致浏览器为了给出准确读值而提前计算布局，频繁交替读写会造成 layout thrashing。",
+    "answerText": "连续读取 offsetWidth/offsetHeight 并紧接着写样式"
+  },
+  {
+    "id": 120,
+    "module": "JS/CSS 基础",
+    "type": "choice",
+    "question": "关于 let/const 与 var 的区别，说法错误的是？",
+    "options": [
+      "let/const 有块级作用域",
+      "var 存在函数作用域",
+      "let 会变量提升但不会初始化（TDZ）",
+      "const 声明的对象完全不可变"
+    ],
+    "answer": 3,
+    "analysis": "const 仅保证绑定不可重新赋值，对象内部属性仍可修改；要深度不可变需 Object.freeze 等配合递归处理。",
+    "answerText": "const 声明的对象完全不可变"
+  },
+  {
+    "id": 201,
+    "module": "Vue 核心原理",
+    "type": "choice",
+    "question": "Vue3 的响应式系统使用什么 API 代替了 Vue2 的 Object.defineProperty？",
+    "options": [
+      "Object.observe",
+      "Proxy",
+      "Reflect.defineProperty",
+      "Symbol"
+    ],
+    "answer": 1,
+    "analysis": "Vue3 使用 Proxy 代理对象，可拦截所有操作（增删属性、数组下标），性能优于 Vue2 的递归劫持。",
+    "answerText": "Proxy"
+  },
+  {
+    "id": 202,
+    "module": "Vue 核心原理",
+    "type": "choice",
+    "question": "Vue2 中修改数组下标无法触发视图更新，常用的解决办法是？",
+    "options": [
+      "this.$set / Vue.set",
+      "Object.assign",
+      "Array.prototype.push",
+      "强制刷新"
+    ],
+    "answer": 0,
+    "analysis": "Vue2 无法检测索引赋值，需用 Vue.set(arr, index, val) 或 splice 触发响应式更新。",
+    "answerText": "this.$set / Vue.set"
+  },
+  {
+    "id": 203,
+    "module": "Vue 核心原理",
+    "type": "choice",
+    "question": "关于 Vue3 Composition API 的 setup() 函数，说法错误的是？",
+    "options": [
+      "执行时机在 beforeCreate 之前",
+      "内部无法访问 this",
+      "可以直接返回渲染函数",
+      "可以访问 data 和 methods 中定义的变量"
+    ],
+    "answer": 3,
+    "analysis": "setup() 执行非常早（beforeCreate 之前），此时 Options API 的 data/methods 尚未初始化，因此无法访问。",
+    "answerText": "可以访问 data 和 methods 中定义的变量"
+  },
+  {
+    "id": 204,
+    "module": "Vue 核心原理",
+    "type": "choice",
+    "question": "Vue Diff 算法中，key 的作用是？",
+    "options": [
+      "优化 v-if 切换性能",
+      "唯一标识节点，复用 DOM 提高 Diff 效率",
+      "防止样式冲突",
+      "给 CSS 动画提供标识"
+    ],
+    "answer": 1,
+    "analysis": "key 给 VNode 提供唯一标识，Diff 对比时能准确判断节点是移动还是销毁重建，最大化复用 DOM。",
+    "answerText": "唯一标识节点，复用 DOM 提高 Diff 效率"
+  },
+  {
+    "id": 205,
+    "module": "Vue 核心原理",
+    "type": "choice",
+    "question": "nextTick 的原理是？",
+    "options": [
+      "setTimeout(0)",
+      "Promise.resolve().then()",
+      "MutationObserver",
+      "以上都是（降级策略）"
+    ],
+    "answer": 3,
+    "analysis": "Vue 优先使用 Promise.then（微任务），不支持则降级为 MutationObserver、setImmediate、setTimeout。",
+    "answerText": "以上都是（降级策略）"
+  },
+  {
+    "id": 206,
+    "module": "Vue 核心原理",
+    "type": "judge",
+    "question": "Vue3 中使用 ref 定义基本类型，reactive 定义对象类型，这是强制规定的。",
+    "answer": false,
+    "analysis": "错误。ref 也可以定义对象（内部自动转 reactive），reactive 只能定义对象。通常建议统一用 ref 以保持一致性（自动解包）。"
+  },
+  {
+    "id": 207,
+    "module": "Vue 核心原理",
+    "type": "judge",
+    "question": "keep-alive 组件的作用是缓存不活动的组件实例，避免反复销毁重建。",
+    "answer": true,
+    "analysis": "正确。keep-alive 配合 include/exclude 可缓存路由组件，保留状态（如滚动位置、表单内容）。"
+  },
+  {
+    "id": 208,
+    "module": "Vue 核心原理",
+    "type": "choice",
+    "question": "Vue 组件通信中，子组件修改父组件数据的正确方式是？",
+    "options": [
+      "直接修改 props",
+      "通过 $parent 修改",
+      "emit 事件通知父组件修改",
+      "使用全局变量"
+    ],
+    "answer": 2,
+    "analysis": "单向数据流原则，Props 只读。子组件应 $emit('update:xxx', val) 通知父组件修改。",
+    "answerText": "emit 事件通知父组件修改"
+  },
+  {
+    "id": 209,
+    "module": "Vue 核心原理",
+    "type": "choice",
+    "question": "Pinia 相比 Vuex 的改进，不包括？",
+    "options": [
+      "移除了 Mutation",
+      "更好的 TypeScript 支持",
+      "支持多 Store 拆分",
+      "增加了 Module 嵌套结构"
+    ],
+    "answer": 3,
+    "analysis": "Pinia 恰恰去掉了复杂的 Module 嵌套，改为扁平化的多 Store 模式，且移除了冗余的 Mutation。",
+    "answerText": "增加了 Module 嵌套结构"
+  },
+  {
+    "id": 210,
+    "module": "Vue 核心原理",
+    "type": "choice",
+    "question": "Vue3 的 Teleport 组件主要用于？",
+    "options": [
+      "路由跳转",
+      "数据传输",
+      "将组件 DOM 渲染到 body 等指定节点",
+      "动画效果"
+    ],
+    "answer": 2,
+    "analysis": "Teleport（传送门）允许将模态框、Tooltip 等 DOM 渲染到 DOM 树之外（如 body），解决 z-index 层级问题。",
+    "answerText": "将组件 DOM 渲染到 body 等指定节点"
+  },
+  {
+    "id": 211,
+    "module": "Vue 核心原理",
+    "type": "choice",
+    "question": "Vue3 中 computed 的特性描述正确的是？",
+    "options": [
+      "每次访问都会重新计算",
+      "会缓存，依赖不变时复用上次结果",
+      "不能用于响应式系统",
+      "只能返回基本类型"
+    ],
+    "answer": 1,
+    "analysis": "computed 默认是惰性求值并缓存结果，依赖变化才会重新计算；它可以返回任意类型。",
+    "answerText": "会缓存，依赖不变时复用上次结果"
+  },
+  {
+    "id": 212,
+    "module": "Vue 核心原理",
+    "type": "choice",
+    "question": "watch 与 watchEffect 的主要区别是？",
+    "options": [
+      "watchEffect 可以停止，watch 不能停止",
+      "watch 需要显式声明依赖，watchEffect 自动收集依赖",
+      "watchEffect 只能监听 ref，watch 只能监听 reactive",
+      "watchEffect 不会立即执行"
+    ],
+    "answer": 1,
+    "analysis": "watch 需要指定 source（依赖显式）；watchEffect 会在执行回调时自动收集依赖（隐式）。两者都支持 stop，也都可通过配置控制是否立即执行。",
+    "answerText": "watch 需要显式声明依赖，watchEffect 自动收集依赖"
+  },
+  {
+    "id": 213,
+    "module": "Vue 核心原理",
+    "type": "choice",
+    "question": "关于 ref 自动解包（unwrap），下列说法正确的是？",
+    "options": [
+      "在模板中 ref 一律不需要 .value",
+      "在 setup 里 ref 一律不需要 .value",
+      "在 reactive 包裹的对象上 ref 不会被解包",
+      "解包只发生在浏览器环境"
+    ],
+    "answer": 0,
+    "analysis": "模板中会自动解包 ref（大多数情况下无需 .value）。在 JS/TS 逻辑中访问 ref 仍需 .value；在 reactive 对象属性上也会进行一定程度的解包，但有边界与细节。",
+    "answerText": "在模板中 ref 一律不需要 .value"
+  },
+  {
+    "id": 214,
+    "module": "Vue 核心原理",
+    "type": "choice",
+    "question": "Vue3 中 toRefs 的主要用途是？",
+    "options": [
+      "把 ref 转成 reactive",
+      "把 reactive 对象的每个属性转成 ref，保持解构后的响应性",
+      "把 computed 转成普通值",
+      "把 watchEffect 转成 watch"
+    ],
+    "answer": 1,
+    "analysis": "当你想解构 reactive 对象时，直接解构会丢失响应性；toRefs 可以把每个属性转成 ref，从而解构后仍保持响应式。",
+    "answerText": "把 reactive 对象的每个属性转成 ref，保持解构后的响应性"
+  },
+  {
+    "id": 215,
+    "module": "Vue 核心原理",
+    "type": "choice",
+    "question": "关于 v-model 在组件上的本质，说法正确的是？",
+    "options": [
+      "等价于 prop + emit 的语法糖",
+      "只能绑定字符串",
+      "只能用于表单元素",
+      "会绕过单向数据流"
+    ],
+    "answer": 0,
+    "analysis": "组件上的 v-model 本质是 prop（默认 modelValue）+ 事件（默认 update:modelValue）的语法糖，也支持参数形式实现多个 v-model。",
+    "answerText": "等价于 prop + emit 的语法糖"
+  },
+  {
+    "id": 216,
+    "module": "Vue 核心原理",
+    "type": "judge",
+    "question": "Vue3 中 reactive 只能接收对象类型，不能接收基本类型。",
+    "answer": true,
+    "analysis": "正确。reactive 基于 Proxy，需要对象；基本类型请用 ref。"
+  },
+  {
+    "id": 217,
+    "module": "Vue 核心原理",
+    "type": "judge",
+    "question": "watch 监听 reactive 对象时默认是深度监听。",
+    "answer": true,
+    "analysis": "正确（常见口径）。watch(source) 里 source 为 reactive 对象时会隐式 deep；如果只想监听某个字段应传 getter，例如 () => state.x。"
+  },
+  {
+    "id": 218,
+    "module": "Vue 核心原理",
+    "type": "choice",
+    "question": "provide/inject 更适合用于什么场景？",
+    "options": [
+      "父子组件简单传参的首选",
+      "跨多层组件传递依赖（避免层层 props）",
+      "替代 Pinia 做全局状态",
+      "替代路由传参"
+    ],
+    "answer": 1,
+    "analysis": "provide/inject 常用于依赖注入（主题、表单上下文、组件库内部上下文）等跨层级传递，避免层层 props 透传；但不建议用来当全局状态管理的替代品。",
+    "answerText": "跨多层组件传递依赖（避免层层 props）"
+  },
+  {
+    "id": 219,
+    "module": "Vue 核心原理",
+    "type": "choice",
+    "question": "Vue3 中 shallowRef 的特点是？",
+    "options": [
+      "不会触发任何更新",
+      "只对 .value 的替换触发更新，不深度追踪对象内部变化",
+      "等价于 reactive",
+      "只能用于数组"
+    ],
+    "answer": 1,
+    "analysis": "shallowRef 只追踪 ref 本身的 value 变化，不会递归把内部对象变成响应式；当你希望由外部系统（如大型对象、第三方实例）控制内部变化时很有用。",
+    "answerText": "只对 .value 的替换触发更新，不深度追踪对象内部变化"
+  },
+  {
+    "id": 220,
+    "module": "Vue 核心原理",
+    "type": "choice",
+    "question": "关于组件的 key，下列说法正确的是？",
+    "options": [
+      "key 只在 v-if 中有用",
+      "key 只影响样式，不影响渲染",
+      "合理的 key 有助于 Diff 复用与正确移动节点",
+      "key 会让渲染必然变慢"
+    ],
+    "answer": 2,
+    "analysis": "key 让 VNode 具有稳定身份，Diff 才能正确判断移动/复用，避免错误复用带来的状态错乱；在列表渲染中尤为关键。",
+    "answerText": "合理的 key 有助于 Diff 复用与正确移动节点"
+  },
+  {
+    "id": 301,
+    "module": "性能优化",
+    "type": "choice",
+    "question": "对于长列表（如 10 万条数据），最有效的性能优化手段是？",
+    "options": [
+      "分页加载",
+      "虚拟列表（Virtual List）",
+      "懒加载",
+      "服务端渲染"
+    ],
+    "answer": 1,
+    "analysis": "虚拟列表只渲染可视区域 DOM，无论数据多少，DOM 节点数恒定，彻底解决卡顿。分页和懒加载仍可能导致 DOM 过多。",
+    "answerText": "虚拟列表（Virtual List）"
+  },
+  {
+    "id": 302,
+    "module": "性能优化",
+    "type": "choice",
+    "question": "图片懒加载（Lazy Load）的核心原理是？",
+    "options": [
+      "使用 setTimeout 延时加载",
+      "监听 scroll 事件或使用 IntersectionObserver",
+      "压缩图片体积",
+      "使用 SVG 占位"
+    ],
+    "answer": 1,
+    "analysis": "通过监听元素是否进入视口（IntersectionObserver API 性能最好），再将 data-src 赋值给 src。",
+    "answerText": "监听 scroll 事件或使用 IntersectionObserver"
+  },
+  {
+    "id": 303,
+    "module": "性能优化",
+    "type": "choice",
+    "question": "Webpack 中开启 Gzip 压缩需要配置哪个插件？",
+    "options": [
+      "HtmlWebpackPlugin",
+      "MiniCssExtractPlugin",
+      "CompressionWebpackPlugin",
+      "DefinePlugin"
+    ],
+    "answer": 2,
+    "analysis": "CompressionWebpackPlugin 用于构建时生成 .gz 文件，Nginx 开启 gzip_static 后直接传输，减少 CPU 压力。",
+    "answerText": "CompressionWebpackPlugin"
+  },
+  {
+    "id": 304,
+    "module": "性能优化",
+    "type": "judge",
+    "question": "CDN（内容分发网络）不仅能加速静态资源加载，还能解决跨域问题。",
+    "answer": false,
+    "analysis": "错误。CDN 主要通过就近节点加速资源获取。跨域问题仍需配置 CORS 或 Nginx 反代，CDN 本身不解决跨域（除非配置 Access-Control-Allow-Origin）。"
+  },
+  {
+    "id": 305,
+    "module": "性能优化",
+    "type": "choice",
+    "question": "为了减少首屏白屏时间（FCP），以下做法无效的是？",
+    "options": [
+      "路由懒加载",
+      "SSR 服务端渲染",
+      "骨架屏（Skeleton）",
+      "将所有 JS 打包成一个文件"
+    ],
+    "answer": 3,
+    "analysis": "打包成一个大文件会导致下载解析时间过长，加剧白屏。应拆包（Code Splitting）并按需加载。",
+    "answerText": "将所有 JS 打包成一个文件"
+  },
+  {
+    "id": 306,
+    "module": "性能优化",
+    "type": "choice",
+    "question": "浏览器缓存策略中，优先级最高的是？",
+    "options": [
+      "Strong Cache (Expires/Cache-Control)",
+      "Negotiation Cache (ETag)",
+      "Service Worker",
+      "Memory Cache"
+    ],
+    "answer": 2,
+    "analysis": "Service Worker 拦截请求优先级最高，可完全控制缓存逻辑（PWA 核心）。",
+    "answerText": "Service Worker"
+  },
+  {
+    "id": 307,
+    "module": "性能优化",
+    "type": "choice",
+    "question": "防抖（Debounce）和节流（Throttle）的区别？",
+    "options": [
+      "防抖是多次触发只执行最后一次，节流是规定时间内只执行一次",
+      "防抖适合滚动事件，节流适合搜索框",
+      "两者完全一样",
+      "防抖立即执行，节流延迟执行"
+    ],
+    "answer": 0,
+    "analysis": "防抖：最后一次触发后等待 N 秒执行（适合搜索联想）；节流：每隔 N 秒执行一次（适合 resize/scroll）。",
+    "answerText": "防抖是多次触发只执行最后一次，节流是规定时间内只执行一次"
+  },
+  {
+    "id": 308,
+    "module": "性能优化",
+    "type": "judge",
+    "question": "使用 WebP 格式图片通常比 PNG/JPG 体积更小，但需注意兼容性。",
+    "answer": true,
+    "analysis": "正确。WebP 压缩率高，但旧版 Safari/IE 不支持，需 <picture> 标签做降级处理。"
+  },
+  {
+    "id": 309,
+    "module": "性能优化",
+    "type": "choice",
+    "question": "排查内存泄漏（Memory Leak）通常使用 Chrome DevTools 的哪个面板？",
+    "options": [
+      "Network",
+      "Performance",
+      "Memory",
+      "Lighthouse"
+    ],
+    "answer": 2,
+    "analysis": "Memory 面板可录制堆快照（Heap Snapshot），对比分离 DOM 和 JS 对象引用。",
+    "answerText": "Memory"
+  },
+  {
+    "id": 310,
+    "module": "性能优化",
+    "type": "choice",
+    "question": "大文件上传（1GB+）优化的核心技术方案是？",
+    "options": [
+      "压缩文件",
+      "Base64 编码",
+      "切片上传 + 断点续传",
+      "WebSocket 传输"
+    ],
+    "answer": 2,
+    "analysis": "将文件切分为小块（Chunk）并发上传，失败仅重传该块；服务端合并。Base64 会增加体积，不适合大文件。",
+    "answerText": "切片上传 + 断点续传"
+  },
+  {
+    "id": 311,
+    "module": "性能优化",
+    "type": "choice",
+    "question": "以下哪个指标更直接反映首屏主要内容加载完成（用户可感知）？",
+    "options": [
+      "FCP",
+      "LCP",
+      "CLS",
+      "FID"
+    ],
+    "answer": 1,
+    "analysis": "LCP（Largest Contentful Paint）衡量最大内容元素渲染完成时间，更贴近用户感知的首屏主要内容加载；FCP 仅是首次内容绘制。",
+    "answerText": "LCP"
+  },
+  {
+    "id": 312,
+    "module": "性能优化",
+    "type": "choice",
+    "question": "预加载（preload）与预取（prefetch）的区别是？",
+    "options": [
+      "preload 用于低优先级，prefetch 用于高优先级",
+      "preload 通常用于当前页面关键资源，prefetch 用于未来可能用到的资源",
+      "两者完全一样",
+      "prefetch 会阻塞首屏渲染"
+    ],
+    "answer": 1,
+    "analysis": "preload 更偏当前导航的关键资源提前加载；prefetch 偏向空闲时间加载未来可能需要的资源，优先级更低。",
+    "answerText": "preload 通常用于当前页面关键资源，prefetch 用于未来可能用到的资源"
+  },
+  {
+    "id": 313,
+    "module": "性能优化",
+    "type": "choice",
+    "question": "减少 CLS（累计布局偏移）的有效做法是？",
+    "options": [
+      "图片不设置宽高，让浏览器自适应",
+      "为图片/广告位预留尺寸或占位",
+      "尽量使用 document.write",
+      "用 setTimeout 延迟渲染"
+    ],
+    "answer": 1,
+    "analysis": "CLS 常因布局在渲染过程中被挤动产生；为图片、广告位、异步组件预留尺寸能显著降低 CLS。",
+    "answerText": "为图片/广告位预留尺寸或占位"
+  },
+  {
+    "id": 314,
+    "module": "性能优化",
+    "type": "choice",
+    "question": "为什么读取 DOM 布局信息后紧接着写样式可能导致性能问题？",
+    "options": [
+      "会触发 GC",
+      "会触发强制同步布局，导致频繁重排",
+      "会导致网络阻塞",
+      "会导致内存泄漏"
+    ],
+    "answer": 1,
+    "analysis": "读取布局信息可能迫使浏览器先把待处理的样式计算/布局计算完成；如果再写样式，会不断打断流水线形成 layout thrashing。",
+    "answerText": "会触发强制同步布局，导致频繁重排"
+  },
+  {
+    "id": 315,
+    "module": "性能优化",
+    "type": "choice",
+    "question": "关于资源缓存，下列 Cache-Control 组合最常用于“带 hash 的静态资源”？",
+    "options": [
+      "no-store",
+      "max-age=0, must-revalidate",
+      "max-age=31536000, immutable",
+      "private, no-cache"
+    ],
+    "answer": 2,
+    "analysis": "带 hash 的静态资源内容变更即 url 变更，可配置长缓存 max-age=31536000 并加 immutable，减少重复请求。",
+    "answerText": "max-age=31536000, immutable"
+  },
+  {
+    "id": 316,
+    "module": "性能优化",
+    "type": "judge",
+    "question": "使用 transform/opacity 做动画通常比修改 top/left 更性能友好。",
+    "answer": true,
+    "analysis": "正确。transform/opacity 多数情况下只走合成层（Composite），避免频繁布局与绘制。"
+  },
+  {
+    "id": 317,
+    "module": "性能优化",
+    "type": "judge",
+    "question": "开启 SourceMap 一定会让线上性能变差。",
+    "answer": false,
+    "analysis": "错误。是否影响线上取决于是否对外暴露、是否被下载、以及配置方式。常见做法是线上使用 hidden-source-map 或只上传到监控平台，不让用户下载到 sourcemap 文件。"
+  },
+  {
+    "id": 318,
+    "module": "性能优化",
+    "type": "choice",
+    "question": "对于第三方脚本（如埋点/广告），更推荐的加载方式是？",
+    "options": [
+      "同步加载放在 head 顶部",
+      "加上 async/defer 或动态加载",
+      "用 document.write 注入",
+      "内联到主 bundle"
+    ],
+    "answer": 1,
+    "analysis": "第三方脚本可能阻塞主线程与渲染，通常应 async/defer 或在需要时再动态加载，并做好失败兜底。",
+    "answerText": "加上 async/defer 或动态加载"
+  },
+  {
+    "id": 319,
+    "module": "性能优化",
+    "type": "choice",
+    "question": "衡量并定位长任务（Long Task）常用的手段是？",
+    "options": [
+      "Network 面板",
+      "Performance 面板或 PerformanceObserver",
+      "Elements 面板",
+      "Application 面板"
+    ],
+    "answer": 1,
+    "analysis": "Performance 面板可以看到主线程长任务，配合 PerformanceObserver（longtask）可在运行时采集并上报。",
+    "answerText": "Performance 面板或 PerformanceObserver"
+  },
+  {
+    "id": 320,
+    "module": "性能优化",
+    "type": "choice",
+    "question": "代码分割（Code Splitting）的主要收益是？",
+    "options": [
+      "提高 JS 语法兼容性",
+      "减少首屏需要下载/解析的 JS 体积",
+      "提升图片压缩率",
+      "提升后端 QPS"
+    ],
+    "answer": 1,
+    "analysis": "按路由/按需拆分可显著减少首屏 JS 下载与解析时间，提升 FCP/LCP 以及交互就绪速度。",
+    "answerText": "减少首屏需要下载/解析的 JS 体积"
+  },
+  {
+    "id": 401,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "choice",
+    "question": "Webpack 中 Loader 和 Plugin 的区别？",
+    "options": [
+      "Loader 转换文件，Plugin 扩展功能",
+      "Loader 处理 JS，Plugin 处理 CSS",
+      "Loader 运行在打包后，Plugin 运行在打包前",
+      "没有区别"
+    ],
+    "answer": 0,
+    "analysis": "Loader（转换器）将非 JS 文件（Less/Vue）转为 JS；Plugin（插件）监听生命周期钩子，执行复杂任务（压缩、拷贝、注入）。",
+    "answerText": "Loader 转换文件，Plugin 扩展功能"
+  },
+  {
+    "id": 402,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "choice",
+    "question": "Vite 相比 Webpack 开发环境启动快的主要原因是？",
+    "options": [
+      "使用 Rust 编写",
+      "基于 ESM 原生模块加载，不打包",
+      "缓存机制更好",
+      "多线程编译"
+    ],
+    "answer": 1,
+    "analysis": "Vite 开发模式下利用浏览器原生 ES Module 支持，直接请求源码，省去了 Webpack 漫长的 bundle 过程。",
+    "answerText": "基于 ESM 原生模块加载，不打包"
+  },
+  {
+    "id": 403,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "choice",
+    "question": "Webpack 的 Tree Shaking 依赖于什么模块规范？",
+    "options": [
+      "CommonJS",
+      "AMD",
+      "ES Module (ES6)",
+      "UMD"
+    ],
+    "answer": 2,
+    "analysis": "Tree Shaking 依赖 ESM 的静态结构分析，CommonJS 是动态的，无法确定哪些导出未被使用。",
+    "answerText": "ES Module (ES6)"
+  },
+  {
+    "id": 404,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "choice",
+    "question": "Babel 的主要作用是？",
+    "options": [
+      "代码压缩",
+      "ES6+ 转 ES5 语法降级",
+      "CSS 预处理",
+      "代码风格检查"
+    ],
+    "answer": 1,
+    "analysis": "Babel 是 JS 编译器，将新语法转为旧浏览器兼容的 ES5 代码。",
+    "answerText": "ES6+ 转 ES5 语法降级"
+  },
+  {
+    "id": 405,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "choice",
+    "question": "Git 命令中，将暂存区内容提交到本地仓库的是？",
+    "options": [
+      "git add",
+      "git commit",
+      "git push",
+      "git checkout"
+    ],
+    "answer": 1,
+    "analysis": "add 到暂存区，commit 到本地库，push 到远程库。",
+    "answerText": "git commit"
+  },
+  {
+    "id": 406,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "choice",
+    "question": "Webpack 配置中 resolve.alias 的作用是？",
+    "options": [
+      "定义全局变量",
+      "配置路径别名（如 @ 指向 src）",
+      "解析 CSS 文件",
+      "压缩代码"
+    ],
+    "answer": 1,
+    "analysis": "方便引入文件，避免 ../../../ 这种长路径。",
+    "answerText": "配置路径别名（如 @ 指向 src）"
+  },
+  {
+    "id": 407,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "choice",
+    "question": "Git Flow 工作流中，feature 分支通常从哪个分支检出？",
+    "options": [
+      "master",
+      "develop",
+      "release",
+      "hotfix"
+    ],
+    "answer": 1,
+    "analysis": "feature（功能分支）从 develop 检出，完成后合并回 develop。",
+    "answerText": "develop"
+  },
+  {
+    "id": 408,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "judge",
+    "question": "Vite 生产环境打包默认使用 Rollup，而不是 esbuild。",
+    "answer": true,
+    "analysis": "正确。虽然 esbuild 极快（用于开发环境预构建），但 Rollup 在代码分割和 CSS 处理上更成熟，因此 Vite 生产环境目前仍用 Rollup。"
+  },
+  {
+    "id": 409,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "choice",
+    "question": "npm scripts 中串行执行两个命令的连接符是？",
+    "options": [
+      "&",
+      "&&",
+      "||",
+      "|"
+    ],
+    "answer": 1,
+    "analysis": "&& 是串行（前一个成功才执行后一个），& 是并行（同时执行）。",
+    "answerText": "&&"
+  },
+  {
+    "id": 410,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "choice",
+    "question": "Monorepo（单体仓库）架构的优势不包括？",
+    "options": [
+      "统一工作流和依赖管理",
+      "代码共享方便",
+      "构建速度绝对变快",
+      "原子化提交"
+    ],
+    "answer": 2,
+    "analysis": "Monorepo 随着项目增多，全量构建速度会变慢，通常需要 Turborepo 等工具进行增量构建优化。",
+    "answerText": "构建速度绝对变快"
+  },
+  {
+    "id": 411,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "choice",
+    "question": "package-lock.json / pnpm-lock.yaml 的主要作用是？",
+    "options": [
+      "提升运行时性能",
+      "锁定依赖版本，保证可复现安装",
+      "替代 package.json",
+      "加快网络下载速度"
+    ],
+    "answer": 1,
+    "analysis": "锁文件记录依赖树的精确版本与解析结果，保证不同机器/不同时间安装的依赖一致，降低“本地能跑线上挂”的风险。",
+    "answerText": "锁定依赖版本，保证可复现安装"
+  },
+  {
+    "id": 412,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "choice",
+    "question": "语义化版本号中，^1.2.3 的含义是？",
+    "options": [
+      "只允许补丁更新",
+      "允许次版本与补丁更新，但不跨主版本",
+      "允许跨主版本更新",
+      "完全锁死 1.2.3"
+    ],
+    "answer": 1,
+    "analysis": "^1.2.3 允许升级到 <2.0.0 的较新版本（包含 minor/patch），不跨 major；~1.2.3 通常只允许升级到 <1.3.0。",
+    "answerText": "允许次版本与补丁更新，但不跨主版本"
+  },
+  {
+    "id": 413,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "choice",
+    "question": "Vite 中读取环境变量通常使用哪个对象？",
+    "options": [
+      "process.env",
+      "import.meta.env",
+      "window.env",
+      "global.env"
+    ],
+    "answer": 1,
+    "analysis": "Vite 在 ESM 环境下通过 import.meta.env 注入环境变量；且默认只暴露以 VITE_ 开头的变量给客户端代码。",
+    "answerText": "import.meta.env"
+  },
+  {
+    "id": 414,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "choice",
+    "question": "Tree Shaking 失效的常见原因不包括？",
+    "options": [
+      "使用了 CommonJS 导出",
+      "依赖包没有提供 ESM 入口",
+      "package.json sideEffects 标注不当",
+      "开启了代码压缩"
+    ],
+    "answer": 3,
+    "analysis": "开启压缩不等于 Tree Shaking；Tree Shaking依赖静态分析（ESM）以及正确的副作用标注。",
+    "answerText": "开启了代码压缩"
+  },
+  {
+    "id": 415,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "choice",
+    "question": "SourceMap 的主要价值是？",
+    "options": [
+      "让代码体积变小",
+      "让线上错误栈能映射回源码便于定位",
+      "让运行速度变快",
+      "让 CSS 自动前缀生效"
+    ],
+    "answer": 1,
+    "analysis": "SourceMap 用于调试与错误定位，把压缩后的代码位置映射回源码；常与监控平台结合还原堆栈。",
+    "answerText": "让线上错误栈能映射回源码便于定位"
+  },
+  {
+    "id": 416,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "judge",
+    "question": "npm install 会优先根据 lock 文件解析依赖版本。",
+    "answer": true,
+    "analysis": "正确。lock 文件存在且未冲突时，安装会以 lock 结果为准，从而保证一致性。"
+  },
+  {
+    "id": 417,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "judge",
+    "question": "把所有代码打成一个巨大 bundle 一定比拆包更快。",
+    "answer": false,
+    "analysis": "错误。大 bundle 会增加首屏下载/解析/执行时间；拆包配合按需加载与缓存通常更优（但也要控制请求数量与分包粒度）。"
+  },
+  {
+    "id": 418,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "choice",
+    "question": "关于 ESM 与 CommonJS，下列说法正确的是？",
+    "options": [
+      "ESM 是运行时解析，CommonJS 是编译时解析",
+      "ESM 支持静态分析，利于 Tree Shaking",
+      "CommonJS 天生支持 Tree Shaking",
+      "两者只能在浏览器使用"
+    ],
+    "answer": 1,
+    "analysis": "ESM 是静态结构，便于静态分析与 Tree Shaking；CommonJS 是运行时 require，难以静态分析。",
+    "answerText": "ESM 支持静态分析，利于 Tree Shaking"
+  },
+  {
+    "id": 419,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "choice",
+    "question": "减少打包体积的做法中，风险最高的是？",
+    "options": [
+      "按需加载路由",
+      "把大依赖 external 化走 CDN",
+      "开启 gzip/brotli",
+      "移除未使用代码"
+    ],
+    "answer": 1,
+    "analysis": "external/CDN 能显著减包，但要处理版本一致性、可用性、缓存与 SRI/兜底加载等问题，风险与维护成本更高。",
+    "answerText": "把大依赖 external 化走 CDN"
+  },
+  {
+    "id": 420,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "choice",
+    "question": "构建产物分析通常使用什么手段？",
+    "options": [
+      "只看 DevTools Console",
+      "使用打包分析插件查看依赖体积与占比",
+      "只看 npm ls",
+      "只看 tsconfig"
+    ],
+    "answer": 1,
+    "analysis": "通过 bundle analyzer（Webpack Bundle Analyzer、rollup-plugin-visualizer 等）可以直观看到依赖体积占比，从而定位需要拆分/替换/按需引入的模块。",
+    "answerText": "使用打包分析插件查看依赖体积与占比"
+  },
+  {
+    "id": 501,
+    "module": "低代码平台",
+    "type": "choice",
+    "question": "低代码平台的核心驱动模式通常是？",
+    "options": [
+      "MVC 模式",
+      "MVVM 模式",
+      "Schema（JSON）驱动",
+      "直接生成 HTML"
+    ],
+    "answer": 2,
+    "analysis": "低代码核心是将页面结构、组件配置抽象为 JSON Schema，渲染器（Renderer）读取 Schema 动态渲染页面。",
+    "answerText": "Schema（JSON）驱动"
+  },
+  {
+    "id": 502,
+    "module": "低代码平台",
+    "type": "choice",
+    "question": "在低代码编辑器中，实现组件从左侧物料区拖拽到画布，常用 HTML5 API 是？",
+    "options": [
+      "Draggable / Dragstart / Drop",
+      "TouchStart / TouchMove",
+      "Click / Hover",
+      "Canvas API"
+    ],
+    "answer": 0,
+    "analysis": "HTML5 Drag and Drop API 是实现 PC 端拖拽的标准方案。",
+    "answerText": "Draggable / Dragstart / Drop"
+  },
+  {
+    "id": 503,
+    "module": "低代码平台",
+    "type": "choice",
+    "question": "Monaco Editor（VS Code 内核）在低代码平台中的主要用途是？",
+    "options": [
+      "渲染页面",
+      "编写自定义 JS/CSS 代码",
+      "文件上传",
+      "绘制图表"
+    ],
+    "answer": 1,
+    "analysis": "Monaco Editor 提供专业的代码编辑体验（高亮、补全），常用于低代码平台的“高级设置”或“自定义逻辑”编写。",
+    "answerText": "编写自定义 JS/CSS 代码"
+  },
+  {
+    "id": 504,
+    "module": "低代码平台",
+    "type": "choice",
+    "question": "低代码组件库版本管理中，为了防止组件更新导致旧页面崩溃，应采取什么策略？",
+    "options": [
+      "强制所有页面更新",
+      "组件版本化 + 语义化版本控制",
+      "不更新组件",
+      "手动修改数据库"
+    ],
+    "answer": 1,
+    "analysis": "Schema 中应记录组件版本号（如 Button@1.0.0），渲染时加载对应版本，确保旧页面不受新版组件 Breaking Change 影响。",
+    "answerText": "组件版本化 + 语义化版本控制"
+  },
+  {
+    "id": 505,
+    "module": "低代码平台",
+    "type": "judge",
+    "question": "低代码平台的'出码'（Code Generation）是指将 JSON Schema 转换为可维护的 Vue/React 源码。",
+    "answer": true,
+    "analysis": "正确。除了运行时渲染，出码能力允许开发者导出源码进行二次开发，避免厂商锁定。"
+  },
+  {
+    "id": 506,
+    "module": "低代码平台",
+    "type": "choice",
+    "question": "在你的项目中，BlockSuite 方案主要解决了什么问题？",
+    "options": [
+      "代码压缩",
+      "通用组件库的构建与复用",
+      "网络请求",
+      "数据库设计"
+    ],
+    "answer": 1,
+    "analysis": "简历提到“引入 blocksuite 方案构建通用组件库”，旨在解决不同项目间 UI 模块的标准化复用。",
+    "answerText": "通用组件库的构建与复用"
+  },
+  {
+    "id": 507,
+    "module": "低代码平台",
+    "type": "choice",
+    "question": "vue-json-pretty 库在低代码平台中通常用于？",
+    "options": [
+      "美化代码",
+      "展示和编辑 JSON Schema 数据",
+      "图表渲染",
+      "富文本编辑"
+    ],
+    "answer": 1,
+    "analysis": "简历提到“封装物料协议数据预览与编辑功能”，即用于直观展示组件配置的 JSON 结构。",
+    "answerText": "展示和编辑 JSON Schema 数据"
+  },
+  {
+    "id": 508,
+    "module": "低代码平台",
+    "type": "choice",
+    "question": "为了实现低代码平台的撤销/重做（Undo/Redo）功能，常用的设计模式是？",
+    "options": [
+      "命令模式（Command Pattern）",
+      "观察者模式",
+      "单例模式",
+      "工厂模式"
+    ],
+    "answer": 0,
+    "analysis": "命令模式将操作封装为对象，记录操作历史栈，方便执行 execute 和 undo。",
+    "answerText": "命令模式（Command Pattern）"
+  },
+  {
+    "id": 509,
+    "module": "低代码平台",
+    "type": "judge",
+    "question": "Schema 渲染器只需解析组件类型，不需要处理组件间的交互逻辑（如 A 组件改变触发 B 组件显隐）。",
+    "answer": false,
+    "analysis": "错误。高级低代码平台必须支持联动逻辑，通常在 Schema 中定义 events/actions 或表达式，渲染器需解析并执行这些逻辑。"
+  },
+  {
+    "id": 510,
+    "module": "低代码平台",
+    "type": "choice",
+    "question": "自定义 Webpack Plugin 实现源码脱敏，应该在哪个生命周期钩子介入？",
+    "options": [
+      "entryOption",
+      "compilation",
+      "emit (资源输出前)",
+      "done"
+    ],
+    "answer": 2,
+    "analysis": "emit 阶段可以获取到最终即将输出的 assets（代码文件），此时修改内容（脱敏）最为合适。",
+    "answerText": "emit (资源输出前)"
+  },
+  {
+    "id": 511,
+    "module": "低代码平台",
+    "type": "choice",
+    "question": "Schema 驱动渲染中，Renderer 的核心职责是？",
+    "options": [
+      "把 Schema 直接写入数据库",
+      "把 Schema 映射为组件树并渲染",
+      "把 Schema 转成图片",
+      "把 Schema 作为 CSS 变量"
+    ],
+    "answer": 1,
+    "analysis": "Renderer 负责把 Schema（结构+配置）递归解析为组件树，并注入 props/events/slots，最终渲染成页面。",
+    "answerText": "把 Schema 映射为组件树并渲染"
+  },
+  {
+    "id": 512,
+    "module": "低代码平台",
+    "type": "choice",
+    "question": "低代码平台中做 Schema 校验最常见的手段是？",
+    "options": [
+      "写死 if/else",
+      "使用 JSON Schema + 校验器（如 ajv）",
+      "靠人工约定",
+      "只在 UI 上限制，不做校验"
+    ],
+    "answer": 1,
+    "analysis": "用 JSON Schema 描述协议并用校验器做运行时校验，可以在保存/发布前发现结构错误，降低线上渲染崩溃风险。",
+    "answerText": "使用 JSON Schema + 校验器（如 ajv）"
+  },
+  {
+    "id": 513,
+    "module": "低代码平台",
+    "type": "choice",
+    "question": "属性面板（Setter）与物料（组件）之间最关键的约定是？",
+    "options": [
+      "页面路由",
+      "组件的 props 协议与默认值/类型",
+      "CSS 变量名",
+      "后端接口路径"
+    ],
+    "answer": 1,
+    "analysis": "Setter 修改的是组件 props 的配置，因此必须有清晰的 props 协议（类型、默认值、可选项、校验规则），否则会出现配置不可控或渲染异常。",
+    "answerText": "组件的 props 协议与默认值/类型"
+  },
+  {
+    "id": 514,
+    "module": "低代码平台",
+    "type": "choice",
+    "question": "为了解决组件升级导致旧页面不兼容，常见做法是？",
+    "options": [
+      "强制所有页面立刻迁移",
+      "组件版本化并提供迁移脚本（migrate）",
+      "永远不升级组件",
+      "只升级 UI 不升级逻辑"
+    ],
+    "answer": 1,
+    "analysis": "给组件做版本化（语义化版本）并提供 schema migrate，可以在发布时自动把旧 schema 升级到新版本，减少人为迁移成本。",
+    "answerText": "组件版本化并提供迁移脚本（migrate）"
+  },
+  {
+    "id": 515,
+    "module": "低代码平台",
+    "type": "choice",
+    "question": "低代码平台中 Undo/Redo 的数据结构通常是？",
+    "options": [
+      "一个数组保存当前 schema",
+      "两个栈（past/future）或历史栈指针",
+      "一个 Set",
+      "一个 Map"
+    ],
+    "answer": 1,
+    "analysis": "常见实现是 past/future 两个栈，或用数组+指针记录历史快照；也可用命令模式记录操作并支持 undo。",
+    "answerText": "两个栈（past/future）或历史栈指针"
+  },
+  {
+    "id": 516,
+    "module": "低代码平台",
+    "type": "judge",
+    "question": "低代码平台的联动（事件/条件显隐）通常需要表达式或动作编排能力支持。",
+    "answer": true,
+    "analysis": "正确。联动不只是组件渲染，还涉及事件触发、条件判断、状态更新与副作用执行，通常需要表达式引擎或 action pipeline 支撑。"
+  },
+  {
+    "id": 517,
+    "module": "低代码平台",
+    "type": "judge",
+    "question": "把 Schema 存在数据库就一定能保证页面可回放。",
+    "answer": false,
+    "analysis": "错误。可回放还依赖组件版本、渲染器版本、协议兼容、外部数据源与运行环境等；通常需要版本冻结与兼容策略。"
+  },
+  {
+    "id": 518,
+    "module": "低代码平台",
+    "type": "choice",
+    "question": "画布拖拽放置组件时，“插入位置”的常见计算依据是？",
+    "options": [
+      "鼠标 x 坐标",
+      "鼠标 y 坐标与目标节点边界（before/after）",
+      "浏览器窗口大小",
+      "接口返回值"
+    ],
+    "answer": 1,
+    "analysis": "常见做法是根据鼠标位置与目标节点的 bounding box 判断插入到 before/after/inside，并更新 schema 树结构。",
+    "answerText": "鼠标 y 坐标与目标节点边界（before/after）"
+  },
+  {
+    "id": 519,
+    "module": "低代码平台",
+    "type": "choice",
+    "question": "渲染器性能优化中，更关键的是？",
+    "options": [
+      "每次都深拷贝完整 schema 再渲染",
+      "避免全量重渲染，做节点级别更新或缓存",
+      "把所有组件都 Teleport 到 body",
+      "把所有样式写成内联"
+    ],
+    "answer": 1,
+    "analysis": "schema 变更频繁时应避免整树重渲染，通常需要稳定 key、局部更新、memo/cache、虚拟列表（大画布）等手段。",
+    "answerText": "避免全量重渲染，做节点级别更新或缓存"
+  },
+  {
+    "id": 520,
+    "module": "低代码平台",
+    "type": "choice",
+    "question": "低代码协议中描述“组件事件”最常见的模型是？",
+    "options": [
+      "只存一个字符串",
+      "events: 事件名 -> actions（动作列表）",
+      "只存 CSS",
+      "只存 DOM 节点"
+    ],
+    "answer": 1,
+    "analysis": "常见模型是把事件映射到动作列表（如 setState、request、navigate、show/hide），并支持条件、参数映射与串并行控制。",
+    "answerText": "events: 事件名 -> actions（动作列表）"
+  },
+  {
+    "id": 601,
+    "module": "浏览器与网络",
+    "type": "choice",
+    "question": "跨域（CORS）请求中，浏览器会自动发出预检请求（Preflight），其 HTTP 方法是？",
+    "options": [
+      "POST",
+      "GET",
+      "OPTIONS",
+      "HEAD"
+    ],
+    "answer": 2,
+    "analysis": "复杂请求（如带自定义头、非简单 Content-Type）会先发 OPTIONS 请求询问服务器是否允许跨域。",
+    "answerText": "OPTIONS"
+  },
+  {
+    "id": 602,
+    "module": "浏览器与网络",
+    "type": "choice",
+    "question": "TCP 三次握手的主要目的是？",
+    "options": [
+      "加密传输",
+      "建立可靠连接，同步序列号",
+      "压缩数据",
+      "分配 IP 地址"
+    ],
+    "answer": 1,
+    "analysis": "三次握手确认双方收发能力正常，同步初始序列号（ISN），建立可靠连接。",
+    "answerText": "建立可靠连接，同步序列号"
+  },
+  {
+    "id": 603,
+    "module": "浏览器与网络",
+    "type": "choice",
+    "question": "浏览器输入 URL 到页面展示，解析 HTML 构建 DOM 树的阶段称为？",
+    "options": [
+      "Parsing",
+      "Layout",
+      "Paint",
+      "Composite"
+    ],
+    "answer": 0,
+    "analysis": "Parsing（解析）阶段将 HTML 文本转为 DOM 树。",
+    "answerText": "Parsing"
+  },
+  {
+    "id": 604,
+    "module": "浏览器与网络",
+    "type": "choice",
+    "question": "HTTPS 相比 HTTP 安全的原因是引入了什么协议？",
+    "options": [
+      "SSH",
+      "SSL/TLS",
+      "FTP",
+      "WebSocket"
+    ],
+    "answer": 1,
+    "analysis": "SSL/TLS 协议位于 TCP 和 HTTP 之间，提供加密、身份认证和完整性校验。",
+    "answerText": "SSL/TLS"
+  },
+  {
+    "id": 605,
+    "module": "浏览器与网络",
+    "type": "choice",
+    "question": "XSS（跨站脚本攻击）的主要防范措施是？",
+    "options": [
+      "使用 HTTPS",
+      "对用户输入进行转义/过滤",
+      "验证码",
+      "Referer 检查"
+    ],
+    "answer": 1,
+    "analysis": "XSS 本质是恶意代码注入，核心防御是对输入输出进行 HTML 转义（Escaping）。",
+    "answerText": "对用户输入进行转义/过滤"
+  },
+  {
+    "id": 606,
+    "module": "浏览器与网络",
+    "type": "judge",
+    "question": "LocalStorage 的数据会自动随 HTTP 请求发送给服务器。",
+    "answer": false,
+    "analysis": "错误。Cookie 会随请求发送，LocalStorage 和 SessionStorage 纯本地存储，除非手动读取发送。"
+  },
+  {
+    "id": 607,
+    "module": "浏览器与网络",
+    "type": "choice",
+    "question": "CSRF（跨站请求伪造）的防御手段不包括？",
+    "options": [
+      "CSRF Token",
+      "SameSite Cookie 属性",
+      "验证 Referer",
+      "使用 eval 函数"
+    ],
+    "answer": 3,
+    "analysis": "eval 是危险函数，容易导致 XSS，与防御 CSRF 无关。CSRF 防御核心是校验请求来源合法性。",
+    "answerText": "使用 eval 函数"
+  },
+  {
+    "id": 608,
+    "module": "浏览器与网络",
+    "type": "choice",
+    "question": "HTTP/2 相比 HTTP/1.1 的巨大改进是？",
+    "options": [
+      "多路复用（Multiplexing）",
+      "更复杂的 Header",
+      "取消了状态码",
+      "只支持文本"
+    ],
+    "answer": 0,
+    "analysis": "多路复用允许在单一 TCP 连接上并发传输多个请求/响应，解决了队头阻塞问题。",
+    "answerText": "多路复用（Multiplexing）"
+  },
+  {
+    "id": 609,
+    "module": "浏览器与网络",
+    "type": "choice",
+    "question": "以下哪个属性会导致回流（Reflow）？",
+    "options": [
+      "transform: translate()",
+      "opacity",
+      "offsetWidth",
+      "color"
+    ],
+    "answer": 2,
+    "analysis": "读取 offsetWidth/offsetHeight 会强制浏览器计算布局（Reflow），而 transform/opacity 仅触发合成（Composite），性能最好。",
+    "answerText": "offsetWidth"
+  },
+  {
+    "id": 610,
+    "module": "浏览器与网络",
+    "type": "choice",
+    "question": "WebSocket 是基于什么协议的？",
+    "options": [
+      "UDP",
+      "TCP",
+      "HTTP",
+      "FTP"
+    ],
+    "answer": 1,
+    "analysis": "WebSocket 基于 TCP，握手阶段使用 HTTP Upgrade 协议。",
+    "answerText": "TCP"
+  },
+  {
+    "id": 611,
+    "module": "浏览器与网络",
+    "type": "choice",
+    "question": "从输入域名到拿到 IP，最关键的解析步骤是？",
+    "options": [
+      "TCP 三次握手",
+      "DNS 解析（本地缓存/递归解析）",
+      "TLS 握手",
+      "HTTP 请求"
+    ],
+    "answer": 1,
+    "analysis": "域名到 IP 依赖 DNS 解析，浏览器会依次查浏览器缓存/系统缓存/hosts/本地 DNS，再走递归解析。",
+    "answerText": "DNS 解析（本地缓存/递归解析）"
+  },
+  {
+    "id": 612,
+    "module": "浏览器与网络",
+    "type": "choice",
+    "question": "HTTP 缓存中，ETag/If-None-Match 属于哪一类缓存？",
+    "options": [
+      "强缓存",
+      "协商缓存",
+      "内存缓存",
+      "Service Worker 缓存"
+    ],
+    "answer": 1,
+    "analysis": "ETag/If-None-Match 用于协商缓存，服务端根据资源版本判断是否返回 304；强缓存依赖 Cache-Control/Expires。",
+    "answerText": "协商缓存"
+  },
+  {
+    "id": 613,
+    "module": "浏览器与网络",
+    "type": "choice",
+    "question": "Cookie 的 SameSite=None 要生效，通常还需要满足？",
+    "options": [
+      "必须是 HTTP",
+      "必须设置 Secure 且走 HTTPS",
+      "必须设置 HttpOnly",
+      "必须设置 Max-Age=0"
+    ],
+    "answer": 1,
+    "analysis": "SameSite=None 需要配合 Secure，否则现代浏览器会拒绝或降级；因此通常要求 HTTPS。",
+    "answerText": "必须设置 Secure 且走 HTTPS"
+  },
+  {
+    "id": 614,
+    "module": "浏览器与网络",
+    "type": "choice",
+    "question": "以下哪些情况会触发 CORS 预检（Preflight）？",
+    "options": [
+      "GET 且无自定义头",
+      "POST 且 Content-Type 为 text/plain",
+      "PUT 请求",
+      "请求同源资源"
+    ],
+    "answer": 2,
+    "analysis": "预检常见触发条件：非简单方法（PUT/DELETE 等）、带自定义头、或 Content-Type 不是简单值等。同源不涉及 CORS。",
+    "answerText": "PUT 请求"
+  },
+  {
+    "id": 615,
+    "module": "浏览器与网络",
+    "type": "choice",
+    "question": "CSP（内容安全策略）主要用于防御什么攻击？",
+    "options": [
+      "CSRF",
+      "XSS",
+      "SQL 注入",
+      "DDoS"
+    ],
+    "answer": 1,
+    "analysis": "CSP 通过限制脚本来源、禁止内联脚本等方式减少 XSS 注入的执行面；CSRF 主要靠 SameSite/Token 等防御。",
+    "answerText": "XSS"
+  },
+  {
+    "id": 616,
+    "module": "浏览器与网络",
+    "type": "judge",
+    "question": "HTTP Keep-Alive 可以在同一 TCP 连接上复用多个 HTTP 请求/响应。",
+    "answer": true,
+    "analysis": "正确。Keep-Alive 允许连接复用，减少 TCP 握手开销；HTTP/2 则进一步在单连接上多路复用并发流。"
+  },
+  {
+    "id": 617,
+    "module": "浏览器与网络",
+    "type": "judge",
+    "question": "Service Worker 的作用域（scope）可以跨域控制任意站点资源。",
+    "answer": false,
+    "analysis": "错误。Service Worker 受同源策略限制，作用域只能在注册时指定的路径范围内生效，且必须同源。"
+  },
+  {
+    "id": 618,
+    "module": "浏览器与网络",
+    "type": "choice",
+    "question": "TLS（HTTPS）握手阶段的主要目的不包括？",
+    "options": [
+      "协商加密套件与密钥",
+      "校验证书与身份",
+      "压缩 HTML 内容",
+      "建立安全通信通道"
+    ],
+    "answer": 2,
+    "analysis": "TLS 握手用于协商算法与密钥并完成身份认证，从而建立加密通道；HTML 压缩属于传输层/应用层的压缩策略（gzip/brotli），与 TLS 握手无关。",
+    "answerText": "压缩 HTML 内容"
+  },
+  {
+    "id": 619,
+    "module": "浏览器与网络",
+    "type": "choice",
+    "question": "SSE（Server-Sent Events）与 WebSocket 的差异是？",
+    "options": [
+      "SSE 是双向通信，WebSocket 是单向",
+      "SSE 基于 HTTP，通常是服务端单向推送",
+      "WebSocket 必须走 UDP",
+      "SSE 不能断线重连"
+    ],
+    "answer": 1,
+    "analysis": "SSE 基于 HTTP 长连接，服务端向客户端单向推送，浏览器原生支持自动重连；WebSocket 是全双工通信。",
+    "answerText": "SSE 基于 HTTP，通常是服务端单向推送"
+  },
+  {
+    "id": 620,
+    "module": "浏览器与网络",
+    "type": "choice",
+    "question": "关于缓存与刷新，下列说法正确的是？",
+    "options": [
+      "强制刷新一定只走强缓存",
+      "普通刷新会优先走强缓存（若未过期）",
+      "协商缓存会返回 200 且不带实体",
+      "304 会携带完整响应体"
+    ],
+    "answer": 1,
+    "analysis": "资源未过期时普通刷新通常走强缓存；协商缓存命中会返回 304 且不带响应体；304 的实体由本地缓存提供。",
+    "answerText": "普通刷新会优先走强缓存（若未过期）"
+  },
+  {
+    "id": 701,
+    "module": "手写代码",
+    "type": "card",
+    "question": "手写防抖函数 (debounce)",
+    "answer": "function debounce(fn, delay) {\n  let timer = null;\n  return function(...args) {\n    if(timer) clearTimeout(timer);\n    timer = setTimeout(() => {\n      fn.apply(this, args);\n    }, delay);\n  }\n}"
+  },
+  {
+    "id": 702,
+    "module": "手写代码",
+    "type": "card",
+    "question": "手写节流函数 (throttle)",
+    "answer": "function throttle(fn, delay) {\n  let lastTime = 0;\n  return function(...args) {\n    const now = Date.now();\n    if (now - lastTime > delay) {\n      fn.apply(this, args);\n      lastTime = now;\n    }\n  }\n}"
+  },
+  {
+    "id": 703,
+    "module": "手写代码",
+    "type": "card",
+    "question": "手写深拷贝 (Deep Clone)",
+    "answer": "function deepClone(obj) {\n  if (typeof obj !== 'object' || obj === null) return obj;\n  const result = Array.isArray(obj) ? [] : {};\n  for (let key in obj) {\n    if (obj.hasOwnProperty(key)) {\n      result[key] = deepClone(obj[key]);\n    }\n  }\n  return result;\n}\n// 注意：生产环境推荐 structuredClone 或 lodash.cloneDeep"
+  },
+  {
+    "id": 704,
+    "module": "手写代码",
+    "type": "card",
+    "question": "手写 Promise.all",
+    "answer": "Promise.myAll = function(promises) {\n  return new Promise((resolve, reject) => {\n    let count = 0;\n    let result = [];\n    const len = promises.length;\n    if(len === 0) resolve([]);\n    promises.forEach((p, i) => {\n      Promise.resolve(p).then(res => {\n        result[i] = res;\n        count++;\n        if (count === len) resolve(result);\n      }).catch(reject);\n    });\n  });\n}"
+  },
+  {
+    "id": 705,
+    "module": "手写代码",
+    "type": "card",
+    "question": "实现数组扁平化 (flat)",
+    "answer": "function flatten(arr) {\n  return arr.reduce((prev, cur) => {\n    return prev.concat(Array.isArray(cur) ? flatten(cur) : cur);\n  }, []);\n}\n// ES6: arr.flat(Infinity)"
+  },
+  {
+    "id": 706,
+    "module": "手写代码",
+    "type": "card",
+    "question": "手写 instanceof 原理",
+    "answer": "function myInstanceof(left, right) {\n  let proto = Object.getPrototypeOf(left);\n  while (true) {\n    if (proto === null) return false;\n    if (proto === right.prototype) return true;\n    proto = Object.getPrototypeOf(proto);\n  }\n}"
+  },
+  {
+    "id": 707,
+    "module": "手写代码",
+    "type": "card",
+    "question": "手写发布订阅模式 (EventEmitter)",
+    "answer": "class EventEmitter {\n  constructor() { this.events = {}; }\n  on(type, cb) {\n    if (!this.events[type]) this.events[type] = [];\n    this.events[type].push(cb);\n  }\n  emit(type, ...args) {\n    if (this.events[type]) {\n      this.events[type].forEach(cb => cb(...args));\n    }\n  }\n  off(type, cb) {\n    if (this.events[type]) {\n      this.events[type] = this.events[type].filter(x => x !== cb);\n    }\n  }\n}"
+  },
+  {
+    "id": 708,
+    "module": "手写代码",
+    "type": "card",
+    "question": "手写 new 操作符",
+    "answer": "function myNew(Constructor, ...args) {\n  const obj = Object.create(Constructor.prototype);\n  const result = Constructor.apply(obj, args);\n  return (typeof result === 'object' && result !== null) ? result : obj;\n}"
+  },
+  {
+    "id": 709,
+    "module": "手写代码",
+    "type": "card",
+    "question": "手写柯里化 (Currying)",
+    "answer": "function curry(fn) {\n  return function curried(...args) {\n    if (args.length >= fn.length) {\n      return fn.apply(this, args);\n    } else {\n      return function(...args2) {\n        return curried.apply(this, args.concat(args2));\n      }\n    }\n  }\n}"
+  },
+  {
+    "id": 710,
+    "module": "手写代码",
+    "type": "card",
+    "question": "手写 AJAX (XMLHttpRequest)",
+    "answer": "const xhr = new XMLHttpRequest();\nxhr.open('GET', url, true);\nxhr.onreadystatechange = function() {\n  if (xhr.readyState === 4 && xhr.status === 200) {\n    console.log(xhr.responseText);\n  }\n};\nxhr.send();"
+  },
+  {
+    "id": 801,
+    "module": "场景题 & 项目经验",
+    "type": "card",
+    "question": "低代码编辑器架构是如何设计的？",
+    "answer": "1. 协议层：定义 JSON Schema 描述页面结构。\n2. 渲染层：Renderer 组件递归解析 Schema，映射为 Vue 组件。\n3. 编辑器层：画布（拖拽区）、属性面板（Setter）、组件物料堆。\n4. 状态管理：使用 Vuex/Pinia 管理页面 Schema，实现 Undo/Redo。"
+  },
+  {
+    "id": 802,
+    "module": "场景题 & 项目经验",
+    "type": "card",
+    "question": "如何实现大文件切片上传？",
+    "answer": "1. 使用 File.slice() 将文件切割为固定大小的 Chunk。\n2. 计算文件 Hash（SparkMD5）作为唯一标识，实现秒传。\n3. 并发上传 Chunk（限制并发数，如 p-limit）。\n4. 所有 Chunk 上传成功后，发送 merge 请求通知后端合并。"
+  },
+  {
+    "id": 803,
+    "module": "场景题 & 项目经验",
+    "type": "card",
+    "question": "Webpack 打包体积减少 40% 具体做了哪些优化？",
+    "answer": "1. 开启 Gzip (CompressionWebpackPlugin)。\n2. 代码分割 (SplitChunks)：分离 node_modules 和业务代码。\n3. Tree Shaking：确保使用 ESM，package.json 配置 sideEffects。\n4.  externals：CDN 引入 Vue/ElementUI。\n5. 图片压缩 (image-webpack-loader)。"
+  },
+  {
+    "id": 804,
+    "module": "场景题 & 项目经验",
+    "type": "card",
+    "question": "虚拟列表在滚动时是如何计算的？",
+    "answer": "1. 监听 scroll 事件，获取 scrollTop。\n2. 计算 startIndex = Math.floor(scrollTop / itemHeight)。\n3. 计算 endIndex = startIndex + visibleCount。\n4. 截取 list.slice(startIndex, endIndex) 渲染。\n5. 设置 padding-top = startIndex * itemHeight 撑开容器位置。"
+  },
+  {
+    "id": 805,
+    "module": "场景题 & 项目经验",
+    "type": "card",
+    "question": "你们的组件库是如何设计和维护的？",
+    "answer": "1. Monorepo 架构（pnpm workspace）管理多包。\n2. 目录结构：packages/components, packages/theme 等。\n3. 打包：使用 Vite/Rollup 打包 ESM/UMD 格式。\n4. 文档：使用 VitePress 生成文档。\n5. 规范：ESLint + Prettier + CommitLint。"
+  },
+  {
+    "id": 806,
+    "module": "场景题 & 项目经验",
+    "type": "card",
+    "question": "移动端 1px 边框问题怎么解决？",
+    "answer": "1. 使用伪元素 + transform: scale(0.5)。\n2. 设置 viewport initial-scale=0.5。\n3. 使用 border-image。\n推荐方案：伪元素缩放，兼容性最好。"
+  },
+  {
+    "id": 807,
+    "module": "场景题 & 项目经验",
+    "type": "card",
+    "question": "如何处理前端权限控制（路由/按钮）？",
+    "answer": "1. 路由权限：后端返回权限表，addRoute 动态添加路由。\n2. 按钮权限：自定义指令 v-permission，判断无权限则 removeChild。\n3. 接口权限：Axios 拦截器处理 403 状态码。"
+  },
+  {
+    "id": 808,
+    "module": "场景题 & 项目经验",
+    "type": "card",
+    "question": "如何排查线上页面卡顿问题？",
+    "answer": "1. 使用 Chrome Performance 面板录制，分析 Long Task。\n2. 检查是否有频繁重排/重绘。\n3. 检查 JS 是否有死循环或复杂计算（考虑 Web Worker）。\n4. 检查内存泄漏。"
+  },
+  {
+    "id": 809,
+    "module": "场景题 & 项目经验",
+    "type": "card",
+    "question": "单点登录 (SSO) 的原理？",
+    "answer": "1. 用户访问系统 A，重定向到 CAS 认证中心。\n2. 认证中心登录成功，生成 Ticket，跳回系统 A。\n3. 系统 A 后端校验 Ticket，生成 Session。\n4. 访问系统 B 时，带上认证中心的 Cookie，自动完成认证。"
+  },
+  {
+    "id": 810,
+    "module": "场景题 & 项目经验",
+    "type": "card",
+    "question": "如何设计一个前端监控系统？",
+    "answer": "1. 数据采集：报错（window.onerror, unhandledrejection）、性能（Performance API）、行为（点击路径）。\n2. 数据上报：navigator.sendBeacon 或 Image Ping。\n3. 清洗与存储：后端处理。\n4. 可视化：Grafana 展示 PV/UV/JS报错率。"
+  },
+  {
+    "id": 901,
+    "module": "JS/CSS 基础",
+    "type": "choice",
+    "question": "以下关于 ES6 模块（ES Module）的说法，正确的是？",
+    "options": [
+      "ES Module 是运行时加载",
+      "ES Module 输出的是值的引用",
+      "ES Module 可以使用 require() 导入",
+      "ES Module 不能 tree-shaking"
+    ],
+    "answer": 1,
+    "analysis": "ES Module 是编译时输出接口，输出的是值的引用，支持静态分析，利于 tree-shaking。CommonJS 是运行时加载，输出值的拷贝。",
+    "answerText": "ES Module 输出的是值的引用"
+  },
+  {
+    "id": 902,
+    "module": "JS/CSS 基础",
+    "type": "choice",
+    "question": "在 CSS 中，哪些属性可以开启硬件加速（GPU 加速）？",
+    "options": [
+      "transform",
+      "background-color",
+      "font-size",
+      "line-height"
+    ],
+    "answer": 0,
+    "analysis": "transform（特别是 translate3d、scale3d 等）以及 opacity、filter 等可以触发浏览器创建合成层，使用 GPU 加速。",
+    "answerText": "transform"
+  },
+  {
+    "id": 903,
+    "module": "JS/CSS 基础",
+    "type": "judge",
+    "question": "Map 和 Object 都可以使用字符串作为键，但 Map 的键可以是任意类型，包括对象、函数等。",
+    "answer": true,
+    "analysis": "正确。Object 的键只能是字符串或 Symbol，而 Map 的键可以是任何类型（包括对象、函数、NaN）。"
+  },
+  {
+    "id": 904,
+    "module": "Vue 核心原理",
+    "type": "choice",
+    "question": "Vue3 中，以下哪个函数用于创建一个在组件挂载前不会追踪依赖的响应式对象？",
+    "options": [
+      "reactive",
+      "ref",
+      "shallowReactive",
+      "markRaw"
+    ],
+    "answer": 3,
+    "analysis": "markRaw 标记一个对象，使其永远不会转换为响应式，一般用于第三方库实例或不可变数据。shallowReactive 只处理对象第一层的响应式，仍然会追踪依赖。",
+    "answerText": "markRaw"
+  },
+  {
+    "id": 905,
+    "module": "Vue 核心原理",
+    "type": "choice",
+    "question": "关于 Vue 的异步更新队列，下列说法错误的是？",
+    "options": [
+      "Vue 在更新 DOM 时是异步执行的",
+      "this.$nextTick 可以获取更新后的 DOM",
+      "Vue 的异步更新默认使用 Promise.then 或 MutationObserver",
+      "同步修改多次数据会触发多次组件重新渲染"
+    ],
+    "answer": 3,
+    "analysis": "Vue 会将多次数据修改合并为一次更新（批量异步更新），不会触发多次渲染，以提升性能。",
+    "answerText": "同步修改多次数据会触发多次组件重新渲染"
+  },
+  {
+    "id": 906,
+    "module": "React 基础（新模块）",
+    "type": "choice",
+    "question": "React Hooks 中，useEffect 的依赖项为空数组 [] 时，表示什么？",
+    "options": [
+      "每次渲染后都执行 effect",
+      "只在组件挂载时执行一次",
+      "只在组件更新时执行",
+      "永远不会执行"
+    ],
+    "answer": 1,
+    "analysis": "useEffect 第二个参数传入空数组，表示 effect 不依赖于任何 props/state，因此只在组件挂载后执行一次，相当于 componentDidMount。",
+    "answerText": "只在组件挂载时执行一次"
+  },
+  {
+    "id": 907,
+    "module": "React 基础（新模块）",
+    "type": "judge",
+    "question": "React 中，函数组件和类组件的性能没有本质区别，但函数组件可以通过 Hooks 实现状态和副作用。",
+    "answer": true,
+    "analysis": "正确。函数组件原本是无状态的，Hooks 出现后可以拥有状态和生命周期能力，性能上差异不大，但函数组件更简洁。"
+  },
+  {
+    "id": 908,
+    "module": "TypeScript 基础（新模块）",
+    "type": "choice",
+    "question": "TypeScript 中，interface 和 type 的区别，描述错误的是？",
+    "options": [
+      "interface 可以重复声明并合并，type 不可以",
+      "type 可以声明基本类型别名，interface 不能",
+      "type 可以使用交叉类型（&），interface 不能使用 extends",
+      "interface 只能描述对象类型，type 可以描述任意类型"
+    ],
+    "answer": 2,
+    "analysis": "interface 可以使用 extends 继承，也可以被类实现；type 也可以使用交叉类型（&）组合。两者在很多场景下可以互换，但存在细微差异。选项 C 错误，因为 interface 可以使用 extends，type 可以使用 &，两者都能实现组合。",
+    "answerText": "type 可以使用交叉类型（&），interface 不能使用 extends"
+  },
+  {
+    "id": 909,
+    "module": "TypeScript 基础（新模块）",
+    "type": "choice",
+    "question": "以下哪个工具类型用于将类型的所有属性变为可选？",
+    "options": [
+      "Partial<T>",
+      "Required<T>",
+      "Readonly<T>",
+      "Pick<T, K>"
+    ],
+    "answer": 0,
+    "analysis": "Partial<T> 将 T 的所有属性变为可选；Required 变为必选；Readonly 变为只读；Pick 选取部分属性。",
+    "answerText": "Partial<T>"
+  },
+  {
+    "id": 910,
+    "module": "性能优化",
+    "type": "choice",
+    "question": "关于浏览器的预加载扫描器（Preload Scanner），以下说法正确的是？",
+    "options": [
+      "它会阻塞 HTML 解析",
+      "它只在空闲时解析 CSS",
+      "它在解析 HTML 的同时提前发现并请求资源（如 <img>、<link>）",
+      "它只对 JavaScript 有效"
+    ],
+    "answer": 2,
+    "analysis": "预加载扫描器（如 Chrome 的轻量级解析器）在 HTML 解析过程中，会提前发现外部资源（图片、样式、脚本等）并开始下载，从而优化加载性能。",
+    "answerText": "它在解析 HTML 的同时提前发现并请求资源（如 <img>、<link>）"
+  },
+  {
+    "id": 911,
+    "module": "性能优化",
+    "type": "judge",
+    "question": "使用 requestIdleCallback 可以在浏览器空闲时执行低优先级任务，不会影响关键渲染路径。",
+    "answer": true,
+    "analysis": "正确。requestIdleCallback 允许开发者在浏览器空闲时段执行任务，适合上报数据、预计算等，避免影响动画和响应。"
+  },
+  {
+    "id": 912,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "choice",
+    "question": "Webpack 中，哪种模式会默认开启 Tree Shaking？",
+    "options": [
+      "development",
+      "production",
+      "none",
+      "watch"
+    ],
+    "answer": 1,
+    "analysis": "Webpack 生产模式（production）默认开启 Tree Shaking 和代码压缩。开发模式通常不会移除无用代码，以方便调试。",
+    "answerText": "production"
+  },
+  {
+    "id": 913,
+    "module": "工程化 (Webpack/Vite)",
+    "type": "choice",
+    "question": "Vite 在开发环境下使用原生 ESM，为什么还需要预构建（Pre-Bundling）？",
+    "options": [
+      "为了将 CommonJS 模块转换为 ESM",
+      "为了压缩代码",
+      "为了生成 sourcemap",
+      "为了热更新"
+    ],
+    "answer": 0,
+    "analysis": "预构建主要目的是将 CommonJS 或 UMD 模块转换为 ESM 格式，以及合并许多内部模块以减少请求数量，提高开发服务器性能。",
+    "answerText": "为了将 CommonJS 模块转换为 ESM"
+  },
+  {
+    "id": 914,
+    "module": "低代码平台",
+    "type": "choice",
+    "question": "在低代码平台的 Schema 设计中，描述组件联动（如 A 组件变化时 B 组件隐藏）通常采用哪种方式？",
+    "options": [
+      "在 A 组件内硬编码 B 的 ID",
+      "使用表达式引擎，在 B 的 props 中配置依赖条件",
+      "通过全局事件总线",
+      "通过后端接口判断"
+    ],
+    "answer": 1,
+    "analysis": "常见做法是在组件配置中声明依赖表达式（如 hidden: '${formData.type === 1}'），渲染器在运行时解析表达式，实现条件渲染。",
+    "answerText": "使用表达式引擎，在 B 的 props 中配置依赖条件"
+  },
+  {
+    "id": 915,
+    "module": "低代码平台",
+    "type": "judge",
+    "question": "低代码平台生成的应用通常无法像手写代码那样进行性能优化。",
+    "answer": false,
+    "analysis": "错误。低代码平台可以通过优化渲染器、使用虚拟列表、按需加载、编译时优化等手段，生成高性能的应用，不必然劣于手写。"
+  },
+  {
+    "id": 916,
+    "module": "浏览器与网络",
+    "type": "choice",
+    "question": "HTTP/3 主要基于哪种传输协议？",
+    "options": [
+      "TCP",
+      "UDP",
+      "TLS",
+      "QUIC"
+    ],
+    "answer": 3,
+    "analysis": "HTTP/3 基于 QUIC 协议，而 QUIC 基于 UDP，集成了 TLS 加密，解决了 HTTP/2 的队头阻塞问题。",
+    "answerText": "QUIC"
+  },
+  {
+    "id": 917,
+    "module": "浏览器与网络",
+    "type": "choice",
+    "question": "关于 Web Worker，下列说法正确的是？",
+    "options": [
+      "可以操作 DOM",
+      "可以访问 localStorage",
+      "可以发送 AJAX 请求",
+      "与主线程共享内存"
+    ],
+    "answer": 2,
+    "analysis": "Web Worker 运行在独立线程，不能直接操作 DOM，不能访问 localStorage 等 Web API，但可以通过 XMLHttpRequest 或 fetch 发送网络请求。",
+    "answerText": "可以发送 AJAX 请求"
+  },
+  {
+    "id": 918,
+    "module": "手写代码",
+    "type": "card",
+    "question": "手写函数组合 (compose) 函数",
+    "answer": "function compose(...fns) {\n  return function(x) {\n    return fns.reduceRight((acc, fn) => fn(acc), x);\n  }\n}"
+  },
+  {
+    "id": 919,
+    "module": "手写代码",
+    "type": "card",
+    "question": "手写 Promise.race",
+    "answer": "Promise.myRace = function(promises) {\n  return new Promise((resolve, reject) => {\n    for (let p of promises) {\n      Promise.resolve(p).then(resolve).catch(reject);\n    }\n  });\n}"
+  },
+  {
+    "id": 920,
+    "module": "场景题 & 项目经验",
+    "type": "card",
+    "question": "如何设计一个前端错误监控 SDK？",
+    "answer": "1. 监听 window.onerror 和 unhandledrejection 捕获 JS 错误。\n2. 重写 console.error 捕获手动日志。\n3. 监听资源加载错误（img、script 等）。\n4. 使用 Performance API 收集性能数据。\n5. 使用 navigator.sendBeacon 或图片请求上报数据。\n6. 生成唯一 ID 标记用户会话，便于聚合。"
+  }
+]
