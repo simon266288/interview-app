@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="h-full flex flex-col bg-gray-50" data-testid="quiz.page">
     <!-- 顶部导航 -->
     <div class="bg-white p-4 shadow-sm flex items-center justify-between z-10">
@@ -28,13 +28,13 @@
 
       <!-- 选项列表 (选择题/判断题) -->
       <div v-if="currentQ.type !== 'card'" class="space-y-3">
-        <button v-for="(opt, idx) in options" :key="idx" 
+        <button v-for="(opt, idx) in options" :key="idx"
           @click="selectOption(idx)"
           :disabled="hasAnswered && !isExamMode"
           class="w-full text-left p-4 rounded-xl border-2 transition relative overflow-hidden"
           :class="getOptionClass(idx)"
           data-testid="quiz.option">
-          
+
           <div class="flex items-start">
             <div class="w-6 h-6 rounded-full border-2 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5"
                  :class="getRadioClass(idx)">
@@ -49,19 +49,19 @@
       </div>
 
       <!-- 记忆卡片 (Card) -->
-      <div v-else class="min-h-[16rem] md:min-h-[24rem] h-auto flip-card cursor-pointer" :class="{ 'flipped': cardFlipped }" @click="cardFlipped = !cardFlipped" data-testid="quiz.flipCard">
+      <div v-else class="min-h-[16rem] md:min-h-[24rem] h-auto flip-card cursor-pointer" :class="{ 'flipped': cardFlipped }" @click="toggleCardFlip" data-testid="quiz.flipCard">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <div class="text-gray-400 text-sm mb-4">点击翻转查看答案</div>
             <i class="fas fa-touch-app text-3xl text-blue-200"></i>
           </div>
-          <div class="flip-card-back text-left items-start overflow-y-auto">
-            <div class="w-full">
+          <div class="flip-card-back text-left items-start">
+            <div ref="cardBackEl" class="w-full card-back-scroll">
               <div class="font-bold text-blue-600 mb-2">参考答案：</div>
-              <div class="text-sm leading-relaxed" 
-                   :class="{ 
+              <div class="text-sm leading-relaxed"
+                   :class="{
                      'font-mono bg-gray-50 p-2 rounded border border-gray-100 whitespace-pre overflow-x-auto text-xs md:text-sm custom-scrollbar': currentQ.module === '手写代码',
-                     'whitespace-pre-wrap': currentQ.module !== '手写代码' 
+                     'whitespace-pre-wrap': currentQ.module !== '手写代码'
                    }">{{ currentQ.answer }}</div>
             </div>
           </div>
@@ -69,7 +69,7 @@
       </div>
 
       <!-- 解析区域 -->
-      <div v-if="(hasAnswered || (currentQ.type === 'card' && cardFlipped)) && !isExamMode && currentQ.module !== '手写代码'" 
+      <div v-if="(hasAnswered || (currentQ.type === 'card' && cardFlipped)) && !isExamMode && currentQ.module !== '手写代码'"
            class="mt-6 p-4 bg-blue-50 rounded-xl border border-blue-100 animate-fade-in"
            data-testid="quiz.analysis">
         <div class="flex items-center text-blue-800 font-bold mb-2">
@@ -113,7 +113,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, onMounted } from 'vue';
+import { ref, computed, watch, onMounted, nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useProgressStore } from '../stores/progress.store';
 import { QUESTION_BANK } from '../data/questionBank';
@@ -128,6 +128,7 @@ const currentQuestions = ref<Question[]>([]);
 const currentIndex = ref(0);
 const userAnswers = ref<Record<number, any>>({});
 const cardFlipped = ref(false);
+const cardBackEl = ref<HTMLElement | null>(null);
 
 // 初始化：根据 query 参数加载题目
 onMounted(() => {
@@ -135,8 +136,6 @@ onMounted(() => {
   const mode = route.query.mode as string; // 'card', 'exam', 'list'
 
   if (mode === 'exam') {
-    // 考试模式逻辑在组件外或此处处理
-    // 如果没有题目传递，说明直接访问，需要重定向
     // 这里简化处理：如果是 exam，直接随机 20 题
     const pool = QUESTION_BANK.filter(q => q.type !== 'card');
     const shuffled = [...pool].sort(() => 0.5 - Math.random());
@@ -162,7 +161,6 @@ onMounted(() => {
     const resumeIdx = store.getPracticeIndex(moduleName);
     currentIndex.value = Math.max(0, Math.min(resumeIdx, currentQuestions.value.length - 1));
   } else {
-    // 默认回退
     router.replace('/');
   }
 });
@@ -178,7 +176,6 @@ const title = computed(() => {
   return (route.query.module || '练习模式') as string;
 });
 
-// 选项与样式
 const options = computed(() => {
   if (currentQ.value.type === 'judge') return ['正确', '错误'];
   return currentQ.value.options || [];
@@ -198,7 +195,7 @@ const getOptionClass = (idx: number) => {
     if (userAnswers.value[currentQ.value.id] === idx) return 'border-blue-500 bg-blue-50 text-blue-700';
     return 'border-gray-200 text-gray-700 hover:bg-gray-50';
   }
-  
+
   const correctAns = currentQ.value.type === 'judge' ? (currentQ.value.answer ? 0 : 1) : currentQ.value.answer;
   if (idx === correctAns) return 'border-green-500 bg-green-50 text-green-700';
   if (userAnswers.value[currentQ.value.id] === idx) return 'border-red-500 bg-red-50 text-red-700 shake-animation';
@@ -224,11 +221,10 @@ const getOptionIcon = (idx: number) => {
   return null;
 };
 
-// 交互
 const selectOption = (idx: number) => {
   if (hasAnswered.value && !isExamMode.value) return;
   userAnswers.value[currentQ.value.id] = idx;
-  
+
   if (!isExamMode.value) {
     const isRight = (currentQ.value.type === 'judge' ? (currentQ.value.answer ? 0 : 1) : currentQ.value.answer) === idx;
     if (isRight) store.addCompleted(currentQ.value.id);
@@ -236,6 +232,15 @@ const selectOption = (idx: number) => {
   }
 };
 
+
+const resetCardScroll = () => {
+  if (cardBackEl.value) cardBackEl.value.scrollTop = 0;
+};
+
+const toggleCardFlip = () => {
+  cardFlipped.value = !cardFlipped.value;
+  if (cardFlipped.value) nextTick(resetCardScroll);
+};
 const markCard = (known: boolean) => {
   if (known) store.addCompleted(currentQ.value.id);
   else store.addWrong(currentQ.value.id);
@@ -261,7 +266,7 @@ const submitExam = () => {
   router.replace('/result');
 };
 
-watch(currentIndex, () => cardFlipped.value = false);
+watch(currentIndex, () => { cardFlipped.value = false; resetCardScroll(); });
 
 watch(
   [currentIndex, total],
@@ -285,7 +290,7 @@ watch(
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: inherit; /* 继承父容器的最小高度 */
+  min-height: inherit;
   text-align: center;
   transition: transform 0.6s;
   transform-style: preserve-3d;
@@ -293,13 +298,10 @@ watch(
 .flip-card.flipped .flip-card-inner {
   transform: rotateY(180deg);
 }
-.flip-card-front, .flip-card-back {
-  /* 移除绝对定位，让内容撑开高度 */
+.flip-card-front,
+.flip-card-back {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border-radius: 1rem;
@@ -312,22 +314,27 @@ watch(
   padding: 1.5rem;
   border: 1px solid #e5e7eb;
 }
-/* 背面不再绝对定位，而是用 CSS Grid 堆叠，或者翻转后让背面变为 relative */
-/* 这里采用简单方案：保持 absolute，但让父容器高度跟随内容变化可能需要 JS 或更复杂的 CSS */
-/* 修正方案：为了让高度自适应，我们不能用 absolute 占满全屏的翻转方案 */
-/* 改为：正面 absolute，背面 relative (翻转后)？不，这会闪烁 */
-
-/* 最终修正方案：不使用 absolute 叠加，而是让 .flip-card-inner 成为 grid 容器，front/back 都在 grid-area: 1/1 重叠 */
-/* 但这样还是需要高度。如果用 JS 控制高度太麻烦。 */
-/* 回退方案：恢复 min-height，但让 .flip-card-back 的 overflow 生效 */
+.flip-card-front {
+  z-index: 2;
+}
+.flip-card.flipped .flip-card-front {
+  pointer-events: none;
+  visibility: hidden;
+}
 .flip-card-back {
+  z-index: 3;
   transform: rotateY(180deg);
-  overflow-y: auto; /* 确保内容溢出时可滚动 */
-  justify-content: flex-start; /* 内容从顶部开始 */
-  align-items: flex-start; /* 内容左对齐 */
+  overflow: hidden;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.card-back-scroll {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* 自定义滚动条样式 */
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -344,3 +351,7 @@ watch(
   background: #9ca3af;
 }
 </style>
+
+
+
+

@@ -2,7 +2,7 @@
   <div class="h-full flex flex-col bg-gray-50" data-testid="home.page">
     <div class="p-6 bg-blue-600 text-white rounded-b-3xl shadow-lg">
       <h1 class="text-2xl font-bold mb-2" data-testid="home.title">前端面试助手</h1>
-      <p class="opacity-90 text-sm">梅军军专属版 | 目标：斩获 Offer</p>
+      <p class="opacity-90 text-sm">目标：斩获 Offer</p>
 
       <div class="mt-6 flex justify-center gap-10 text-center">
         <div class="min-w-20">
@@ -122,4 +122,6 @@ const continueLearning = () => {
   router.push({ path: '/quiz', query: { module: continueTarget.value.module } });
 };
 </script>
+
+
 

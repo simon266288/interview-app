@@ -24,3 +24,60 @@ test('cards: can flip and mark known/unknown', async ({ page }) => {
     .poll(async () => page.getByTestId('quiz.question').textContent())
     .not.toBe(q1)
 })
+
+test('cards: deep clone answer header should remain visible after flip', async ({ page }) => {
+  await gotoHome(page)
+  await gotoModules(page, 'card')
+  await selectModule(page, '手写代码')
+
+  await page.getByTestId('quiz.next').click()
+  await page.getByTestId('quiz.next').click()
+  await expect(page.getByTestId('quiz.question')).toContainText('手写深拷贝')
+
+  await page.getByTestId('quiz.flipCard').click()
+
+  const answerHeader = page.getByText('参考答案：')
+  await expect(answerHeader).toBeVisible()
+  await expect(answerHeader).toBeInViewport()
+})
+
+test('cards: deep clone answer scrollTop=0 should show code first line', async ({ page }) => {
+  await gotoHome(page)
+  await gotoModules(page, 'card')
+  await selectModule(page, '手写代码')
+
+  await page.getByTestId('quiz.next').click()
+  await page.getByTestId('quiz.next').click()
+  await expect(page.getByTestId('quiz.question')).toContainText('手写深拷贝')
+
+  await page.getByTestId('quiz.flipCard').click()
+
+  const scrollContainer = page.locator('.card-back-scroll')
+  await expect(scrollContainer).toBeVisible()
+
+  await scrollContainer.evaluate((el) => {
+    ;(el as HTMLElement).scrollTop = 0
+  })
+
+  await expect
+    .poll(async () =>
+      scrollContainer.evaluate((el) => {
+        const node = el as HTMLElement
+        return {
+          scrollTop: node.scrollTop,
+          scrollHeight: node.scrollHeight,
+          clientHeight: node.clientHeight,
+        }
+      }),
+    )
+    .toMatchObject({ scrollTop: 0 })
+
+  const answerHeader = page.getByText('参考答案：')
+  const codeFirstLine = page.getByText('function deepClone(')
+
+  await expect(answerHeader).toBeInViewport()
+  await expect(codeFirstLine).toBeVisible()
+  await expect(codeFirstLine).toBeInViewport()
+})
+
+
