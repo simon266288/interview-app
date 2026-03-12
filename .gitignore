@@ -19,6 +19,14 @@ CLAUDE.md
 .claude/
 .agents/
 
+# Vite cache
+.vite/
+
+# Local tests/config (root-only; actual project lives in v0.0.2/)
+tests/
+vitest.config.ts
+playwright.config.ts
+
 # Test/artifact outputs
 playwright-report/
 test-results/
