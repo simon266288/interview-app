@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "github-explorer": {
+      "source": "blessonism/github-explorer-skill",
+      "sourceType": "github",
+      "computedHash": "18c2c0094e50f72c06979eec532001b880182b3d55b5ec23ead4ba57539be32e"
+    }
+  }
+}
